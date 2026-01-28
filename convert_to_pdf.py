@@ -22,7 +22,7 @@ load_dotenv()
 INPUT_FOLDER = r"C:\Users\lananoor\OneDrive - Microsoft\ADIC\TranscriptionCode\outputRawTranscription"
 OUTPUT_FOLDER_LOCAL = r"C:\Users\lananoor\OneDrive - Microsoft\ADIC\TranscriptionCode\outputPDF"
 STORAGE_CONNECTION_STRING = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
-OUTPUT_CONTAINER = OS.getenv("OUTPUT_CONTAINER")
+OUTPUT_CONTAINER = os.getenv("OUTPUT_CONTAINER")
 
 # Ensure output folder exists
 os.makedirs(OUTPUT_FOLDER_LOCAL, exist_ok=True)

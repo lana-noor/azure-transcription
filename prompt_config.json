@@ -1,0 +1,120 @@
+{
+  "prompt_templates": {
+    "professional": {
+      "description": "Professional business conversation formatting",
+      "prompts": [
+        "Format the output as a professional business conversation.",
+        "Use proper punctuation and capitalization.",
+        "Identify key discussion points and action items."
+      ]
+    },
+    "meeting_summary": {
+      "description": "Meeting transcription with action items and decisions",
+      "prompts": [
+        "Transcribe this meeting conversation with clear speaker identification.",
+        "Highlight important decisions, action items, and deadlines.",
+        "Use professional business language and proper formatting."
+      ]
+    },
+    "call_center": {
+      "description": "Customer service call transcription",
+      "prompts": [
+        "Transcribe this customer service call with clear speaker labels.",
+        "Identify customer concerns, agent responses, and resolution steps.",
+        "Pay attention to product names, account numbers, and technical terms."
+      ]
+    },
+    "medical": {
+      "description": "Medical conversation with terminology focus",
+      "prompts": [
+        "Transcribe this medical conversation with attention to medical terminology.",
+        "Pay attention to medication names, dosages, symptoms, and diagnoses.",
+        "Maintain professional medical documentation standards."
+      ]
+    },
+    "legal": {
+      "description": "Legal conversation with precise accuracy",
+      "prompts": [
+        "Transcribe this legal conversation with precise accuracy.",
+        "Pay attention to legal terms, case numbers, dates, and proper names.",
+        "Use formal legal documentation style."
+      ]
+    },
+    "interview": {
+      "description": "Interview Q&A formatting",
+      "prompts": [
+        "Transcribe this interview with clear question and answer formatting.",
+        "Identify interviewer and interviewee responses separately.",
+        "Capture key insights and important statements verbatim."
+      ]
+    },
+    "lecture": {
+      "description": "Educational lecture or presentation",
+      "prompts": [
+        "Transcribe this educational lecture or presentation.",
+        "Organize content into clear sections and key points.",
+        "Pay attention to technical terms, definitions, and examples."
+      ]
+    },
+    "casual": {
+      "description": "Natural casual conversation",
+      "prompts": [
+        "Transcribe this casual conversation naturally.",
+        "Preserve the conversational tone and informal language.",
+        "Include natural speech patterns and expressions."
+      ]
+    },
+    "technical": {
+      "description": "Technical discussion with jargon focus",
+      "prompts": [
+        "Transcribe this technical discussion with attention to technical terminology.",
+        "Pay attention to acronyms, technical specifications, and industry jargon.",
+        "Maintain technical accuracy and precision."
+      ]
+    },
+    "sales_call": {
+      "description": "Sales conversation tracking",
+      "prompts": [
+        "Transcribe this sales conversation with focus on customer needs and objections.",
+        "Identify product features discussed, pricing mentioned, and next steps.",
+        "Pay attention to customer questions and sales representative responses."
+      ]
+    },
+    "training_session": {
+      "description": "Training or onboarding session",
+      "prompts": [
+        "Transcribe this training session with clear instruction steps.",
+        "Identify key learning points, procedures, and best practices.",
+        "Pay attention to questions from trainees and trainer responses."
+      ]
+    },
+    "podcast": {
+      "description": "Podcast or media content",
+      "prompts": [
+        "Transcribe this podcast conversation with natural flow.",
+        "Identify different speakers and maintain conversational tone.",
+        "Pay attention to names, references, and key topics discussed."
+      ]
+    }
+  },
+  "language_codes": {
+    "english": "en",
+    "spanish": "es",
+    "french": "fr",
+    "german": "de",
+    "italian": "it",
+    "portuguese": "pt",
+    "chinese": "zh",
+    "japanese": "ja",
+    "korean": "ko"
+  },
+  "best_practices": [
+    "Prompts are subject to a maximum length of 4,096 characters",
+    "Prompts should preferably be written in English",
+    "Prompts can guide output formatting",
+    "Prompts can amplify the salience of specific phrases or acronyms",
+    "Limit the number of phrases per prompt for best results",
+    "Prompts not related to speech tasks are typically disregarded"
+  ]
+}
+
