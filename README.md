@@ -141,37 +141,9 @@ Now that your environment is set up, you can choose between LLM-enhanced transcr
 
 ---
 
-## 🚀 Method 1: LLM-Enhanced Transcription (RECOMMENDED)
+## 🚀 Method 1: LLM-Enhanced Transcription 
 
 The LLM Speech API provides **enhanced transcription** powered by large language models with deep contextual understanding, prompt tuning, and ultra-fast GPU-accelerated processing.
-
-### Quick Start
-
-**Option A: Use the Simple Runner Script**
-
-1. **Edit the configuration** in `run_llm_transcription.py`:
-   ```python
-   # Audio file to process
-   AUDIO_FILE = r"C:\path\to\your\audio.wav"
-
-   # Or use blob storage
-   BLOB_FILE = "your-file.wav"
-   USE_BLOB = True
-
-   # Choose prompt style
-   PROMPT_STYLE = "casual"  # See prompt styles below
-
-   # Enable speaker diarization
-   ENABLE_DIARIZATION = True
-   MAX_SPEAKERS = 5
-   ```
-
-2. **Run the script**:
-   ```powershell
-   python run_llm_transcription.py
-   ```
-
-**Option B: Use the Main Script Directly**
 
 ```powershell
 python llm_transcription.py
@@ -199,15 +171,9 @@ Choose the right style for your content:
 | **`professional`** | Business conversations | Professional formatting, key discussion points |
 | **`custom`** | Your specific needs | Define your own prompts |
 
-### 🌍 Translation Feature
+### Translation Feature
 
 Translate audio to a different language:
-
-```python
-# Edit run_llm_transcription.py
-TASK = "translate"
-TARGET_LANGUAGE = "es"  # Spanish
-```
 
 **Supported languages:**
 - `en` - English
@@ -220,7 +186,7 @@ TARGET_LANGUAGE = "es"  # Spanish
 - `ja` - Japanese
 - `ko` - Korean
 
-### 🎨 Custom Prompts
+### Custom Prompts
 
 Create your own prompts for specific needs:
 
@@ -287,31 +253,9 @@ The LLM transcription produces JSON output with:
   }
 }
 ```
-
-### ✅ Best Practices for Prompts
-
-**DO:**
-- ✅ Keep prompts under 4,096 characters
-- ✅ Write prompts in English (even for other languages)
-- ✅ Be specific about formatting needs
-- ✅ Mention important terminology or acronyms
-- ✅ Focus on speech-related instructions
-
-**DON'T:**
-- ❌ Use prompts unrelated to transcription
-- ❌ Include too many phrases (limit to key terms)
-- ❌ Expect prompts to change the actual spoken content
-- ❌ Use prompts for non-speech tasks
-
-### 📏 File Size Limits
-
-- **Maximum duration:** 2 hours
-- **Maximum file size:** 300 MB
-- **Supported formats:** WAV, MP3, OPUS/OGG, FLAC, WMA, AAC, WebM, SPEEX
-
 ---
 
-## 📦 Method 2: Standard Batch Transcription
+## Method 2: Standard Batch Transcription
 
 For processing multiple files from blob storage:
 
@@ -358,8 +302,8 @@ This script will:
 
 Configure these in your `.env` file:
 
-- **`INPUT_CONTAINER`**: Container with your `.wav` files (e.g., `adic-input-wavfiles`)
-- **`OUTPUT_CONTAINER`**: Container for PDF output (e.g., `adic-transcription-pdf`)
+- **`INPUT_CONTAINER`**: Container with your `.wav` files
+- **`OUTPUT_CONTAINER`**: Container for PDF output
 
 ### Speech Service Settings
 
@@ -419,62 +363,6 @@ Formatted document with:
 - Timestamps for each segment
 - Professional styling and layout
 
-## Troubleshooting
-
-### Common Issues
-
-#### LLM Transcription Issues
-
-1. **Error: "Enhanced mode is currently not supported yet"**
-   - The LLM Speech API is not available in your region yet
-   - Try a different region (eastus, westus2, westeurope)
-   - Or use standard batch transcription instead
-
-2. **Error: 429 (Too Many Requests)**
-   - The service is auto-scaling
-   - Wait a moment and retry
-
-3. **Error: 400 (Bad Request)**
-   - Check your audio file format and size limits
-   - Ensure file is under 2 hours and 300 MB
-   - Verify audio format is supported
-
-4. **Poor Transcription Quality**
-   - Try a different prompt style
-   - Ensure audio quality is good
-   - Specify the correct locale if known
-   - Adjust max_speakers for diarization
-
-5. **Prompts Not Working**
-   - Ensure prompts are speech-related
-   - Keep prompts concise and clear
-   - Write in English
-   - Avoid unrelated instructions
-
-#### Standard Batch Transcription Issues
-
-1. **Authentication Error**: Verify your Azure credentials in `.env`
-2. **No files found**: Ensure `.wav` files are uploaded to the correct container
-3. **Transcription timeout**: Increase `max_wait_minutes` in `batch_transcription.py`
-4. **InvalidData Error**: Audio file format may be incompatible
-   - Ensure WAV files use PCM encoding (not AAC-in-WAV)
-   - Convert to: 16 kHz, Mono, 16-bit PCM
-   - Use FFmpeg or Audacity for proper conversion
-
-#### PDF Generation Issues
-
-1. **PDF generation fails**: Check that JSON files exist in `outputRawTranscription/`
-2. **Upload fails**: Verify blob storage connection string and container name
-
-### Checking Logs
-
-All scripts provide detailed console output showing:
-- Files being processed
-- Progress updates
-- Success/failure status
-- Summary statistics
-- Error messages with details
-
 ## Quick Reference
 
 ### 🚀 Complete Setup (First Time)
@@ -500,8 +388,7 @@ pip install -r requirements.txt
 # Activate virtual environment
 .\venv\Scripts\Activate.ps1
 
-# Edit run_llm_transcription.py first, then:
-python run_llm_transcription.py
+python llm_transcription.py
 ```
 
 **Batch Transcription (Multiple Files):**
@@ -517,59 +404,6 @@ python batch_transcription.py
 ```powershell
 python convert_to_pdf.py
 ```
-
-### 🎯 Common Tasks
-
-#### Process a Single File with LLM
-
-1. Edit `run_llm_transcription.py`:
-   ```python
-   AUDIO_FILE = r"path\to\your\file.wav"
-   PROMPT_STYLE = "casual"
-   ```
-
-2. Run:
-   ```powershell
-   python run_llm_transcription.py
-   ```
-
-#### Process All Files in Blob Storage
-
-```powershell
-python batch_transcription.py
-```
-
-#### Translate Audio to Another Language
-
-Edit `run_llm_transcription.py`:
-```python
-TASK = "translate"
-TARGET_LANGUAGE = "es"  # Spanish
-```
-
-#### Create Custom Prompts
-
-Edit `run_llm_transcription.py`:
-```python
-PROMPT_STYLE = "custom"
-CUSTOM_PROMPTS = [
-    "Your custom instruction 1",
-    "Your custom instruction 2",
-    "Your custom instruction 3"
-]
-```
-
-### 🎬 Typical Workflow
-
-1. **Upload** audio to blob storage (or use local file)
-2. **Choose** transcription method:
-   - LLM for single files with enhanced quality
-   - Batch for multiple files with standard quality
-3. **Configure** settings (prompt style, diarization, etc.)
-4. **Run** transcription script
-5. **Review** JSON output in `outputRawTranscription/`
-6. **Convert** to PDF (optional)
-7. **Find** PDFs in `outputPDF/` and blob storage
 
 ### 💡 Tips
 
@@ -588,95 +422,4 @@ CUSTOM_PROMPTS = [
 - [Batch Transcription REST API](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/batch-transcription-get?pivots=rest-api)
 - [Supported Regions](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/regions)
 
-## 🔑 Environment Variables Reference
-
-Required in `.env`:
-```env
-# Azure Speech Service
-AZURE_SPEECH_KEY=your_speech_key
-AZURE_SPEECH_REGION=eastus
-
-# Azure Storage
-AZURE_STORAGE_CONNECTION_STRING=your_connection_string
-AZURE_STORAGE_ACCOUNT_NAME=your_storage_account
-AZURE_STORAGE_SAS_TOKEN=your_sas_token
-
-# Container Names
-INPUT_CONTAINER=adic-input-wavfiles
-OUTPUT_CONTAINER=adic-transcription-pdf
-```
-
-## 📊 Comparison: When to Use Each Script
-
-| Script | Use Case | Speed | Features | Best For |
-|--------|----------|-------|----------|----------|
-| **`run_llm_transcription.py`** | Quick single file processing | ⚡ Fastest | Easy config, no coding | Quick tests, single files |
-| **`llm_transcription.py`** | Single files, enhanced quality | ⚡ Fast | LLM-powered, prompt tuning | Meetings, calls, specialized content |
-| **`batch_transcription.py`** | Multiple files, standard quality | 🐢 Slower | Batch processing, reliable | Processing many files at once |
-| **`convert_to_pdf.py`** | Convert JSON to PDF | N/A | PDF generation, upload | Creating readable documents |
-
-## 🎓 Advanced Usage
-
-### Using LLM Transcription Programmatically
-
-```python
-from llm_transcription import process_local_file, process_blob_file
-
-# Process a local file
-result = process_local_file(
-    audio_path="path/to/audio.wav",
-    task="transcribe",                    # or "translate"
-    target_language=None,                 # for translation only
-    prompt_style="casual",                # or any other style
-    custom_prompts=None,                  # list of strings
-    enable_diarization=True,              # speaker identification
-    max_speakers=5,                       # limit speakers (None = auto)
-    profanity_filter="Masked"             # "Masked", "Removed", or "None"
-)
-
-# Process a file from blob storage
-result = process_blob_file(
-    blob_name="audio.wav",
-    prompt_style="meeting_summary",
-    enable_diarization=True
-)
-```
-
-### Accessing Transcription Results
-
-```python
-# Get full transcription text
-full_text = result["combinedPhrases"][0]["text"]
-
-# Get speaker segments
-for phrase in result["phrases"]:
-    speaker = phrase.get("speaker", 0)
-    text = phrase.get("text", "")
-    offset_ms = phrase.get("offsetMilliseconds", 0)
-    print(f"Speaker {speaker} ({offset_ms}ms): {text}")
-
-# Get detected languages
-languages = set()
-for phrase in result["phrases"]:
-    locale = phrase.get("locale", "")
-    if locale:
-        languages.add(locale)
-```
-
-## 🆘 Support
-
-For issues or questions:
-1. Check the **Troubleshooting** section above
-2. Review error messages in console output
-3. Refer to Azure AI Speech Service documentation
-4. Verify your `.env` configuration
-5. Ensure audio files meet format requirements
-
-## 📝 Notes
-
-- **LLM Speech API** is currently available in limited regions (eastus, westus2, westeurope, etc.)
-- **Prompt tuning** guides the LLM's transcription behavior but doesn't change the actual spoken content
-- **Speaker diarization** works best with clear audio and distinct speakers
-- **Translation** is only available with LLM transcription, not batch transcription
-- **Audio format** matters - use proper PCM WAV encoding for best results
 
