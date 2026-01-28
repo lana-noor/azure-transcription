@@ -4,7 +4,7 @@ This project provides Python scripts to transcribe audio files using Azure AI Sp
 
 ## Features
 
-### 🆕 LLM-Enhanced Transcription (RECOMMENDED!)
+### 🆕 LLM-Enhanced Transcription 
 - **🧠 AI-Powered Intelligence**: Large language model enhanced transcription with deep contextual understanding
 - **🎯 Prompt Tuning**: Customize output style and formatting with 12+ pre-configured prompts
 - **⚡ Ultra-Fast Processing**: GPU-accelerated inference (faster than real-time)
